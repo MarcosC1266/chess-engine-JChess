@@ -1,19 +1,18 @@
 package main
 
 import (
-	"chess/config"
 	"fmt"
 )
 
-var Sq120ToSq64 [config.BRD_SQ_NUM]int
+var Sq120ToSq64 [BRD_SQ_NUM]int
 var Sq64Tosq120 [64]int
 
 func initSq120To64() {
-	file := config.FILE_A
-	rank := config.RANK_1
+	file := FILE_A
+	rank := RANK_1
 	sq64 := 0
 
-	for i := range config.BRD_SQ_NUM {
+	for i := range BRD_SQ_NUM {
 		Sq120ToSq64[i] = 65
 	}
 
@@ -21,15 +20,15 @@ func initSq120To64() {
 		Sq64Tosq120[i] = 120
 	}
 
-	for rank <= config.RANK_8 {
-		for file <= config.FILE_H {
-			sq := config.FR2SQ(file, rank)
+	for rank <= RANK_8 {
+		for file <= FILE_H {
+			sq := FR2SQ(file, rank)
 			Sq64Tosq120[sq64] = sq
 			Sq120ToSq64[sq] = sq64
 			sq64++
 			file++
 		}
-		file = config.FILE_A
+		file = FILE_A
 		rank++
 	}
 
