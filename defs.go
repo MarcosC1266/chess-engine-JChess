@@ -6,7 +6,7 @@ const MAX_GAME_MOVES = 2048
 
 // Pieces List
 const (
-	Empty = iota
+	EMPTY = iota
 	WP    // White Pawn
 	WN    // White Knight
 	WB    // White Bishop
@@ -192,4 +192,8 @@ type SBoard struct {
 
 func FR2SQ(f, r int) int {
 	return (21 + f) + (r * 10)
+}
+
+func SQ64(sq120 int) int {
+	return Sq120ToSq64[sq120]
 }
