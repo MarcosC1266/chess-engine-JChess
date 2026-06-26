@@ -64,5 +64,9 @@ func main() {
 
 	initAll()
 
-	printBoard()
+	// printBoard()
+	num1 := 1
+	num2 := 2
+
+	assert(num1 != num2, "Debe ser iguales")
 }
