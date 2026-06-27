@@ -4,6 +4,8 @@ const BRD_SQ_NUM = 120
 const NAME = "JChess v1.0"
 const MAX_GAME_MOVES = 2048
 
+const START_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+
 // Pieces List
 const (
 	EMPTY = iota
@@ -149,6 +151,7 @@ const (
 	G8
 	H8
 	NO_SQ
+	OFFBOARD
 )
 
 // Board Configuration
@@ -196,4 +199,8 @@ func FR2SQ(f, r int) int {
 
 func SQ64(sq120 int) int {
 	return Sq120ToSq64[sq120]
+}
+
+func SQ120(sq64 int) int {
+	return Sq64Tosq120[sq64]
 }
