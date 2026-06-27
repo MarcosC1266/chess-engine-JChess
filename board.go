@@ -39,8 +39,58 @@ func ResetBoard(pos *SBoard) {
 	pos.PosKey = uint64(0)
 }
 
-func PrintBoard(pos *SBoard){
-	
+func PrintBoard(pos *SBoard) {
+	fmt.Printf("\nGame Board:\n\n")
+
+	rank := RANK_8
+	file := FILE_A
+
+	for rank >= RANK_1 {
+		fmt.Printf("%d ", rank+1)
+		for file <= FILE_H {
+			sq := FR2SQ(file, rank)
+			piece := pos.Pieces[sq]
+			fmt.Printf("%3c", PceChar[piece])
+			file++
+		}
+		file = FILE_A
+		rank--
+		fmt.Println()
+	}
+
+	fmt.Printf("\n ")
+	for file <= FILE_H {
+		fmt.Printf("%3c", 'a'+file)
+		file++
+	}
+	fmt.Printf("\n")
+	fmt.Printf("side: %c\n", SideChar[pos.Side])
+	fmt.Printf("enPas: %d\n", pos.EnPass)
+
+	Wk := '-'
+	Wq := '-'
+	Bk := '-'
+	Bq := '-'
+
+	if (pos.CastlePerm & WKCA) != 0 {
+		Wk = 'K'
+	}
+
+	if (pos.CastlePerm & WQCA) != 0 {
+		Wq = 'Q'
+	}
+
+	if (pos.CastlePerm & BKCA) != 0 {
+		Bk = 'k'
+	}
+
+	if (pos.CastlePerm & BQCA) != 0 {
+		Bq = 'q'
+	}
+
+	fmt.Printf("castle: %c%c%c%c\n", Wk, Wq, Bk, Bq)
+	fmt.Printf("PosKey: %d\n", pos.PosKey)
+
 }
 
 func ParseFEN(fen string, pos *SBoard) error {

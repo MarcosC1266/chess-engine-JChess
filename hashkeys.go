@@ -9,10 +9,11 @@ func GeneratePosKey(pos *SBoard) uint64 {
 	// pieces
 	for sq < BRD_SQ_NUM {
 		piece = pos.Pieces[sq]
-		if piece != NO_SQ && piece != EMPTY {
+		if piece != NO_SQ && piece != EMPTY && piece != OFFBOARD {
 			assert(piece >= WP && piece <= BK, "Debe ser una pieza valida")
 			finalKey ^= PiecesKeys[piece][sq]
 		}
+		sq++
 	}
 
 	if pos.Side == WHITE {

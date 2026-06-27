@@ -11,7 +11,16 @@ func main() {
 
 	board := SBoard{}
 
-	ResetBoard(&board)
 	ParseFEN(START_FEN, &board)
+	PrintBoard(&board)
+
+	ParseFEN(FEN_1, &board)
+	PrintBoard(&board)
+
+	ParseFEN(FEN_2, &board)
+	PrintBoard(&board)
+
+	ParseFEN(FEN_3, &board)
+	PrintBoard(&board)
 
 }
